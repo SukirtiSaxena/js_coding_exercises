@@ -1,4 +1,4 @@
-/**
+**
  * This function will receive an array of numbers and should return the sum
  * of any numbers which are a multiple of 3 or 5
  * @param {Array} arr
@@ -6,6 +6,11 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  let sumOfNumbers = 0;
+  for (let i=0;i<arr.length;i++)
+	  if (arr[i] % 3 === 0 || arr[i] % 5 === 0)
+		  sumOfNumbers += arr[i];
+  return sumOfNumbers;
 };
 
 /**
@@ -15,6 +20,13 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  let validDNA  = ["C", "G", "T", "A"];
+  for(let i= 0; i < str.length; i++){
+    if(!validDNA.includes(str[i])){
+      return false;
+     }
+   }
+  return true;
 };
 
 /**
@@ -24,6 +36,19 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  let pairObj = {
+    "A": "T",
+    "T": "A",
+    "G": "C",
+    "C": "G"
+    };
+
+  if (isValidDNA(str)) {
+     str = str.replace(/A|G|C|T/gi, function(matched){
+           return pairObj[matched];
+           });
+   return str; 
+  }
 };
 
 /**
@@ -33,6 +58,11 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  for(let i = 2; i < n; i++){
+      if(n % i=== 0)
+        return false;
+  }
+  return true;
 };
 
 /**
@@ -49,6 +79,14 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  let newArr = [];
+  for (let i = 0; i < n;i++){
+      newArr[i] = new Array(n);
+      for(let j = 0; j<n ;j++) {
+	       newArr[i][j] = fill;
+	    }
+  }
+   return newArr;
 };
 
 /**
@@ -66,6 +104,17 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  let staffCount = 0;
+  for (let i=0; i<staff.length;i++){
+	for (let j=0;j<staff[i].rota.length;j++) {
+	    if (staff[i].rota[j] === day)
+		     staffCount++;	
+      }	
+  }
+  if (staffCount ===3)
+	   return true;
+  else
+	   return false;
 };
 
 module.exports = {

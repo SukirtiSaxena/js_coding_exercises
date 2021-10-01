@@ -1,9 +1,14 @@
-/**
+**
  * This function takes a number, e.g. 123 and returns the sum of all its digits, e.g 6 in this example.
  * @param {Number} n
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  let sum = 0;
+  let strN = n.toString();
+  for (i=0;i<strN.length;i++)
+	sum += Number(strN.charAt(i));
+  return sum;
 };
 
 /**
@@ -17,6 +22,12 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+
+  // function createRange(start, end, step = 1) 
+  let arr = [];
+  for (let i = start; i<=end ; i+= step)
+	arr.push(i);
+  return arr;
 };
 
 /**
@@ -51,6 +62,21 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  
+  let totalTime = 0;
+  let alertUsers = [];
+  for(let i = 0;i< users.length;i++)
+     for(let j = 0;j<users[i].screenTime.length;j++) {
+	if ((users[i].screenTime[j].date === date))  {
+	   let totalTimeArr = (Object.values(users[i].screenTime[j].usage));
+	   for (let k = 0; k<totalTimeArr.length;k++) {
+	        totalTime += totalTimeArr[k];
+	   }
+           if (totalTime > 100)
+	     alertUsers.push(users[i].name);	   
+	}
+     }
+    return alertUsers;
 };
 
 /**
@@ -65,6 +91,17 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+
+  let rgbCode = "";
+  let colour = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if(colour){
+      let r= parseInt(colour[1], 16);
+      let g= parseInt(colour[2], 16);
+      let b= parseInt(colour[3], 16);
+      rgbCode = "rgb("+r+","+g+","+b+")"; 
+  } 
+  return rgbCode;
+
 };
 
 /**
@@ -79,6 +116,29 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
+  if ((boardoard[0][0] !== null) &&
+     ((boardoard[0][0] === boardoard[0][1] && boardoard[0][0]=== board[0][2]) ||
+     (board[0][0] === board[1][1] && board[0][0]=== board[2][2]) ||
+     (board[0][0] === board[1][0] && board[0][0]=== board[2][0])))
+     return board[0][0];
+
+  if ((board[0][2] !== null) &&
+     ((board[0][2] === board[1][2] && board[0][2]=== board[2][2]) ||
+     (board[0][2] === board[1][1] && board[0][2]=== board[2][0])))
+     return board[0][2];
+
+  if(board[0][1] !== null && board[0][1] === board[1][1] && board[0][1]=== board[2][1])
+    return board[0][1];
+  else
+  if(board[1][0] !== null && board[1][0] === board[1][1] && board[1][0]=== board[1][2])
+    return board[1][0];
+  else
+  if(board[2][0] !== null && board[2][0] === board[2][1] && board[2][0]=== board[2][2])
+    return board[2][0]);
+  else
+    return "Null";
+
 };
 
 module.exports = {

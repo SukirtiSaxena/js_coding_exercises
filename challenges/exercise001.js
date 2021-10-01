@@ -95,12 +95,12 @@ function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
   // Add your code here!
   let output = '';
-	  if ((n % 3) == 0) 
-        output += "fizz";
-	  if ((n % 5 ) == 0)		
-		    output += "buzz"
-    if ((n % 3) !== 0 && (n % 5) !== 0)
-		    output = n;
+  if ((n % 3) == 0) 
+     output += "fizz";
+  if ((n % 5 ) == 0)		
+     output += "buzz"
+  if ((n % 3) !== 0 && (n % 5) !== 0)
+     output = n;
     return output;
 }
 

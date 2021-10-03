@@ -1,4 +1,4 @@
-**
+/**
  * This function takes a number, e.g. 123 and returns the sum of all its digits, e.g 6 in this example.
  * @param {Number} n
  */
@@ -23,7 +23,8 @@ const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
 
-  // function createRange(start, end, step = 1) 
+  if (step <= 0)
+     return "Step should be greater than 0";
   let arr = [];
   for (let i = start; i<=end ; i+= step)
 	arr.push(i);
@@ -89,11 +90,11 @@ const getScreentimeAlertList = (users, date) => {
  * Hint: You will need to convert each hexadecimal value for R, G and B into its decimal equivalent!
  * @param {String} str
  */
-const hexToRGB = hexStr => {
+ const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
 
   let rgbCode = "";
-  let colour = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  let colour = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexStr);
   if(colour){
       let r= parseInt(colour[1], 16);
       let g= parseInt(colour[2], 16);
@@ -114,11 +115,11 @@ const hexToRGB = hexStr => {
  * The function should return "X" if player X has won, "0" if the player 0 has won, and null if there is currently no winner.
  * @param {Array} board
  */
-const findWinner = board => {
+ const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
 
-  if ((boardoard[0][0] !== null) &&
-     ((boardoard[0][0] === boardoard[0][1] && boardoard[0][0]=== board[0][2]) ||
+  if ((board[0][0] !== null) &&
+     ((board[0][0] === board[0][1] && board[0][0]=== board[0][2]) ||
      (board[0][0] === board[1][1] && board[0][0]=== board[2][2]) ||
      (board[0][0] === board[1][0] && board[0][0]=== board[2][0])))
      return board[0][0];
@@ -135,7 +136,7 @@ const findWinner = board => {
     return board[1][0];
   else
   if(board[2][0] !== null && board[2][0] === board[2][1] && board[2][0]=== board[2][2])
-    return board[2][0]);
+    return board[2][0];
   else
     return "Null";
 

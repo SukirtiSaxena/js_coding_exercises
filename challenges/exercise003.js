@@ -15,8 +15,8 @@
   function getTotalSubjects(people) {
     if (people === undefined) throw new Error("people is required");
     let count = 0;
-    for (let i = 0; i < people.length;i++)
-      for (let j = 0; j <(people[i].subjects.length); ++count && j++);
+    people.forEach((person,index) =>
+      count+= (people[index].subjects.length));
     return count;
   }
 
@@ -24,12 +24,10 @@
   function checkIngredients(menu, ingredient) {
     if (menu === undefined) throw new Error("menu is required");
     if (!ingredient) throw new Error("ingredient is required");
-    for (let i = 0; i < menu.length;i++){
-      for (let j = 0; j <(menu[i].ingredients.length);j++)
-        if (menu[i].ingredients[j] === ingredient)
-          return true ;
-    }
-    return false;
+    let count = 0;
+    menu.forEach((item,index)=>
+      (menu[index].ingredients.indexOf(ingredient)) >= 0 ? count++ : count);
+    return count > 0;
   }
 
   function duplicateNumbers(arr1, arr2) {

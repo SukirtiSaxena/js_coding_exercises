@@ -15,18 +15,17 @@
   function getTotalSubjects(people) {
     if (people === undefined) throw new Error("people is required");
     let count = 0;
-    people.forEach((person,index) =>
-      count+= (people[index].subjects.length));
+    people.forEach((person) =>
+      count+= (person.subjects.length));
     return count;
   }
-
 
   function checkIngredients(menu, ingredient) {
     if (menu === undefined) throw new Error("menu is required");
     if (!ingredient) throw new Error("ingredient is required");
     let count = 0;
-    menu.forEach((item,index)=>
-      (menu[index].ingredients.indexOf(ingredient)) >= 0 ? count++ : count);
+    menu.forEach((item)=>
+      (item.ingredients.indexOf(ingredient)) >= 0 ? count++ : count);
     return count > 0;
   }
 

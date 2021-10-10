@@ -1,9 +1,9 @@
   function findSmallNums(nums) {
     if (!nums) throw new Error("nums is required");
     let smallNums = [];
-    nums.forEach(function(num,index) {
-      if (nums[index] < 1) 
-        smallNums.push(nums[index]);
+    nums.forEach((num) => {
+      if (num < 1) 
+        smallNums.push(num);
     });
     return smallNums;
   }
@@ -12,9 +12,9 @@
     if (!names) throw new Error("names is required");
     if (!char) throw new Error("char is required");
     let NamesBeginningWithChar = [];
-    names.forEach(function(name,index) {
-      if (names[index].charAt(0) === char)
-         NamesBeginningWithChar.push(names[index]);
+    names.forEach((name) => {
+      if (name.charAt(0) === char)
+         NamesBeginningWithChar.push(name);
     });
     return NamesBeginningWithChar;
   }
@@ -22,9 +22,9 @@
   function findVerbs(words) {
     if (!words) throw new Error("words is required");
     let verbs = [];
-    words.forEach(function(word,i) {
-      if (words[i].slice(0,2) === "to" && words[i].slice(2,3) === " ")
-            verbs.push(words[i]);
+    words.forEach((word) => {
+      if (word.slice(0,2) === "to" && word.slice(2,3) === " ")
+        verbs.push(word);
     });
     return verbs ;
   }
@@ -32,9 +32,10 @@
   function getIntegers(nums) {
     if (!nums) throw new Error("nums is required");
     let integer = [];
-    for (let i=0;i<nums.length;i++)
-      if (Number.isInteger(nums[i]))
-        integer.push(nums[i]);
+    nums.forEach((num) => {
+      if (Number.isInteger(num))
+        integer.push(num);
+    });
     return integer;
   }
 

@@ -1,8 +1,6 @@
   function getSquares(nums) {
     if (nums === undefined) throw new Error("nums is required");
-    let squareNum = [];
-    for (let i = 0; i < nums.length;squareNum[i]=Math.pow(nums[i++], 2));
-    return squareNum;
+    return nums.map(num => Math.pow(num, 2));
   }
 
   function camelCaseWords(words) {
@@ -32,10 +30,9 @@
   function duplicateNumbers(arr1, arr2) {
     if (arr1 === undefined) throw new Error("arr1 is required");
     if (arr2 === undefined) throw new Error("arr2 is required");
-    let arr3 = [];  
-    for (let i = 0; i < arr1.length;i++)
-      for (let j = 0; j < arr2.length; (arr1[i] === arr2[j++]) &&  arr3.push(arr1[i])) ;
-    return [...new Set(arr3)].sort();
+    
+    return [... new Set((arr1.filter(val =>  arr2.indexOf(val) != -1)).sort(function(a, b){return a-b}))];
+
   }
 
   module.exports = {

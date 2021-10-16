@@ -5,21 +5,18 @@
 
   function isFromManchester(person) {
     if (person === undefined) throw new Error("person is required");
-    return (person.city === "Manchester");
+    return person.city === "Manchester";
   }
 
   function getBusNumbers(people) {
     if (people === undefined) throw new Error("people is required");
-    let peopleInOneBus = 40;
+    const peopleInOneBus = 40;
     return Math.ceil(people/peopleInOneBus);
   }
 
   function countSheep(arr) {
     if (arr === undefined) throw new Error("arr is required");
-    let farmAnimal = "sheep";
-    let count = 0;
-    for (let i = 0; i < arr.length ; count += Number((arr[i++] === farmAnimal)));
-    return count;
+    return (arr.filter(farmAnimal => farmAnimal === "sheep")).length;
   }
 
   function hasMPostCode(person) {
